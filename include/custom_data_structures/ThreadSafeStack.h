@@ -3,6 +3,8 @@
 #include <vector>
 #include <stdexcept>
 
+using namespace std;
+
 template<typename T> class ThreadSafeStack {
 private:
     std::vector<T> stack;
