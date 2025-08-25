@@ -1,6 +1,7 @@
 #pragma once
 #include <mutex>
 #include <vector>
+#include <stdexcept>
 
 template<typename T> class ThreadSafeStack {
 private:
@@ -20,7 +21,7 @@ public:
 
     T pop() {
         if(isEmptyFlag) {
-            throw std::runtime_error("Stack is empty");
+            throw runtime_error("Stack is empty");
         }
         mutex.lock();
         T element = stack.back();
@@ -32,7 +33,7 @@ public:
 
     T& top() {
         if(isEmptyFlag) {
-            throw std::runtime_error("Stack is empty");
+            throw runtime_error("Stack is empty");
         }
         mutex.lock();
         T& element = stack.back();

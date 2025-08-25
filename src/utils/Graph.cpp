@@ -27,7 +27,7 @@ int Graph::getNumVertices() const {
     return verticesNumber;
 }
 
-const vector<vector<int>>& Graph::getAdjacencyList() const {
+const vector<vector<int>>& Graph::getAdjacencyMatrix() const {
     return adjacencyMatrix;
 }
 
