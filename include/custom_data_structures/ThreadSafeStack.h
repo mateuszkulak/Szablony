@@ -7,17 +7,31 @@ using namespace std;
 
 template<typename T> class ThreadSafeStack {
 private:
-    std::vector<T> stack;
+    struct Node {
+        T data;
+        Node* next;
+        Node(const T& d, Node* n = nullptr) : data(d), next(n) {}
+    };
     mutable std::mutex mutex;
+    Node* head = nullptr;
     bool isEmptyFlag = true;
+    int stackSize = 0;
 
 public:
     ThreadSafeStack() = default;
+    ~ThreadSafeStack() {
+        while (head) {
+            Node* temp = head;
+            head = head->next;
+            delete temp;
+        }
+    }
 
     void push(const T& element) {
         mutex.lock();
-        stack.push_back(element);
+        head = new Node(element, head);
         isEmptyFlag = false;
+        stackSize++;
         mutex.unlock();
     }
 
@@ -26,9 +40,11 @@ public:
             throw runtime_error("Stack is empty");
         }
         mutex.lock();
-        T element = stack.back();
-        stack.pop_back();
-        isEmptyFlag = stack.empty();
+        Node* temp = head;
+        head = head->next;
+        T element = temp->data;
+        delete temp;
+        isEmptyFlag = (head == nullptr);
         mutex.unlock();
         return element;
     }
@@ -38,7 +54,7 @@ public:
             throw runtime_error("Stack is empty");
         }
         mutex.lock();
-        T& element = stack.back();
+        T& element = head->data;
         mutex.unlock();
         return element;
     }
@@ -52,7 +68,7 @@ public:
 
     int size() const {
         mutex.lock();
-        int size = stack.size();
+        int size = stackSize;
         mutex.unlock();
         return size;
     }
