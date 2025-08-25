@@ -3,14 +3,14 @@
 #include "utils/Graph.H"
 #include "algorithms/DFS.h"
 #include "tests/PerformanceTests.h"
-#include "tests/ThreadSafeStackTest.h"
+#include "tests/ConcurrencyStackTests.h"
 
 using namespace std;
 
 int selectTestCategory() {
     cout << "\nChoose test category:\n";
     cout << "1. Performance tests\n";
-    cout << "2. Thread-safety tests\n";
+    cout << "2. Concurrency tests\n";
     cout << "0. Exit\n";
     cout << "Your choice: ";
     int category;
