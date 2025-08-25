@@ -1,4 +1,6 @@
+#pragma once
 #include <mutex>
+#include <vector>
 
 template<typename T> class ThreadSafeStack {
 private:
@@ -38,7 +40,7 @@ public:
         return element;
     }
 
-    bool isEmpty() const {
+    bool empty() const {
         mutex.lock();
         bool empty = isEmptyFlag;
         mutex.unlock();
