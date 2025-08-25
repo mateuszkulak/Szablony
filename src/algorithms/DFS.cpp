@@ -26,44 +26,10 @@ void DFS::run(int start, bool useCustomDataStructure){
 
 void DFS::dfsStlSearch(int v) {
     stack<int> s;
-    s.push(v);
-    const vector<vector<int>>& adjacencyMatrix = graph.getAdjacencyMatrix();
-
-    while (!s.empty()) {
-        int current = s.top();
-        s.pop();
-
-        if (!visited[current]) {
-            visited[current] = true;
-            visitedOrder.push_back(current);
-
-            for (int neighbor = 0; neighbor < adjacencyMatrix.size(); ++neighbor) {
-                if (adjacencyMatrix[current][neighbor] && !visited[neighbor]) {
-                    s.push(neighbor);
-                }
-            }
-        }
-    }
+    dfsGenericSearch(v, s);
 }
 
 void DFS::dfsCustomSearch(int v) {
     ThreadSafeStack<int> s;
-    s.push(v);
-    const vector<vector<int>>& adjacencyMatrix = graph.getAdjacencyMatrix();
-
-    while (!s.empty()) {
-        int current = s.top();
-        s.pop();
-
-        if (!visited[current]) {
-            visited[current] = true;
-            visitedOrder.push_back(current);
-
-            for (int neighbor = 0; neighbor < adjacencyMatrix.size(); ++neighbor) {
-                if (adjacencyMatrix[current][neighbor] && !visited[neighbor]) {
-                    s.push(neighbor);
-                }
-            }
-        }
-    }
+    dfsGenericSearch(v, s);
 }
