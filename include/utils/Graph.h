@@ -14,5 +14,6 @@ public:
     void addEdge(int u, int v, int weight = 1);
     int getEdge(int u, int v) const;
     int getNumVertices() const;
+    const vector<vector<int>>& getAdjacencyList() const;
     void printGraph() const;
 };

@@ -27,6 +27,10 @@ int Graph::getNumVertices() const {
     return verticesNumber;
 }
 
+const vector<vector<int>>& Graph::getAdjacencyList() const {
+    return adjacencyMatrix;
+}
+
 void Graph::printGraph() const {
     cout << "Adjacency Matrix:\n";
     for (int i = 0; i < verticesNumber; ++i) {
