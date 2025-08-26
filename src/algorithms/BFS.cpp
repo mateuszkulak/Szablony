@@ -3,6 +3,8 @@
 #include "custom_data_structures/ThreadSafeQueue.h"
 #include <iostream>
 
+using namespace std;
+
 BFS::BFS(Graph& g) : graph(g) {
     visited = vector<bool>(g.getNumVertices(), false);
     visitedOrder = vector<int>();
@@ -25,7 +27,7 @@ void BFS::run(int start, bool useCustomDataStructure){
 }
 
 void BFS::bfsStlSearch(int v) {
-    std::queue<int> q;
+    queue<int> q;
     bfsGenericSearch(v, q);
 }
 
