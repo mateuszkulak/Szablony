@@ -30,6 +30,10 @@ void Dijkstra::run(int start, int end, bool useCustomDataStructure) {
     cout << endl;
 }
 
+const char* Dijkstra::describe() const {
+    return "This is Dijkstra's algorithm. It finds the shortest path from a starting node to all other nodes in a weighted graph.";
+}
+
 void Dijkstra::dijkstraStlSearch(int start, int end) {
     priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
     dijkstraSearch(start, end, pq);

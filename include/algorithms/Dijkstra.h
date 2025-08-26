@@ -60,5 +60,6 @@ public:
     ~Dijkstra();
 
     void run(int start, int end, bool useCustomDataStructure);
+    const char* describe() const override;
     const vector<int>& getShortestPath() const;
 };

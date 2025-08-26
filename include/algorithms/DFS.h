@@ -41,5 +41,6 @@ public:
     ~DFS();
 
     void run(int start, bool useCustomDataStructure);
+    const char* describe() const override;
     const vector<int>& getVisitedOrder() const;
 };
