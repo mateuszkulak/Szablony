@@ -114,11 +114,16 @@ int main() {
         }
     }
 
+    Graph g1(10000);
+    for (int i = 0; i < 9999; i++) {
+        g1.addEdge(i, i+1);
+    }
+
     while (true) {
         int category = selectTestCategory();
         if (category == 0) break;
         if (category == 1) {
-            runPerformanceMenu(g);
+            runPerformanceMenu(g1);
         } else if (category == 2) {
             runThreadSafetyMenu();
         }
