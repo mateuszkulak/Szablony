@@ -33,6 +33,7 @@ public:
     void push(const T& element) {
         mutex.lock();
         Node* newNode = new Node(element);
+
         if (!tail) {
             head = tail = newNode;
         } else {
@@ -40,6 +41,7 @@ public:
             newNode->prev = tail;
             tail = newNode;
         }
+
         isEmptyFlag = false;
         queueSize++;
         mutex.unlock();
@@ -49,7 +51,9 @@ public:
         if (isEmptyFlag) {
             throw runtime_error("Queue is empty");
         }
+
         mutex.lock();
+
         Node* temp = head;
         T element = temp->data;
         head = head->next;
@@ -61,7 +65,9 @@ public:
         delete temp;
         queueSize--;
         isEmptyFlag = (head == nullptr);
+
         mutex.unlock();
+        
         return element;
     }
 

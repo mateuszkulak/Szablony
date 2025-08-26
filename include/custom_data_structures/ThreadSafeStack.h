@@ -12,6 +12,7 @@ private:
         Node* next;
         Node(const T& d, Node* n = nullptr) : data(d), next(n) {}
     };
+    
     mutable std::mutex mutex;
     Node* head = nullptr;
     bool isEmptyFlag = true;
