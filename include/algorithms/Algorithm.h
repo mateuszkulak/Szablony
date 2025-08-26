@@ -1,3 +1,5 @@
+#pragma once
+
 class Algorithm {
 public:
     virtual ~Algorithm() = default;
