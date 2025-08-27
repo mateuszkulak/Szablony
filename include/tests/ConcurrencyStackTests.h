@@ -7,6 +7,15 @@
 
 using namespace std;
 
+/**
+* Tests concurrent push operations on the stack.
+*
+* Pre-fills the stack and launches two threads that simultaneously push elements.
+* Verifies that the stack handles concurrent insertions correctly.
+*
+* @tparam StackType The type of the stack to test, it must be either
+*         std::stack<int> or ThreadSafeStack<int>.
+*/
 template <typename StackType>
 void testStackConcurrentPush() {
     static_assert(
@@ -28,6 +37,15 @@ void testStackConcurrentPush() {
     cout << "Concurrent push finished successfully, size=" << stack.size() << "\n";
 }
 
+/**
+* Tests concurrent pop operations on the stack.
+*
+* Pre-fills the stack and launches two threads that simultaneously pop elements.
+* Verifies that the stack handles concurrent removals correctly.
+*
+* @tparam StackType The type of the stack to test, it must be either
+*         std::stack<int> or ThreadSafeStack<int>.
+*/
 template <typename StackType>
 void testStackConcurrentPop() {
     static_assert(
@@ -53,6 +71,15 @@ void testStackConcurrentPop() {
     cout << "Concurrent pop finished successfully, stack size=" << stack.size() << "\n";
 }
 
+/**
+* Tests concurrent top operations on the stack.
+*
+* Pre-fills the stack and launches two threads that simultaneously access the top element.
+* Verifies that the stack handles concurrent top accesses correctly.
+*
+* @tparam StackType The type of the stack to test, it must be either
+*         std::stack<int> or ThreadSafeStack<int>.
+*/
 template <typename StackType>
 void testStackConcurrentTop() {
     static_assert(
@@ -76,6 +103,15 @@ void testStackConcurrentTop() {
     cout << "Concurrent top finished successfully \n";
 }
 
+/**
+* Tests concurrent size operations on the stack.
+*
+* Pre-fills the stack and launches two threads that simultaneously access the size.
+* Verifies that the stack handles concurrent size accesses correctly.
+*
+* @tparam StackType The type of the stack to test, it must be either
+*         std::stack<int> or ThreadSafeStack<int>.
+*/
 template <typename StackType>
 void testStackConcurrentSize() {
     static_assert(
@@ -99,6 +135,15 @@ void testStackConcurrentSize() {
     cout << "Concurrent size finished successfully \n";
 }
 
+/**
+* Tests concurrent empty operations on the stack.
+*
+* Pre-fills the stack and launches two threads that simultaneously access the empty state.
+* Verifies that the stack handles concurrent empty checks correctly.
+*
+* @tparam StackType The type of the stack to test, it must be either
+*         std::stack<int> or ThreadSafeStack<int>.
+*/
 template <typename StackType>
 void testStackConcurrentEmpty() {
     static_assert(

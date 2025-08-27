@@ -7,6 +7,15 @@
 
 using namespace std;
 
+/**
+* Tests concurrent push operations on the queue.
+*
+* Pre-fills the queue and launches two threads that simultaneously push elements.
+* Verifies that the queue handles concurrent insertions correctly.
+*
+* @tparam QueueType The type of the queue to test, it must be either
+*         std::queue<int> or ThreadSafeQueue<int>.
+*/
 template <typename QueueType>
 void testQueueConcurrentPush() {
     static_assert(
@@ -28,6 +37,15 @@ void testQueueConcurrentPush() {
     cout << "Concurrent push finished successfully, size=" << stack.size() << "\n";
 }
 
+/**
+* Tests concurrent pop operations on the queue.
+*
+* Pre-fills the queue and launches two threads that simultaneously pop elements.
+* Verifies that the queue handles concurrent removals correctly.
+*
+* @tparam QueueType The type of the queue to test, it must be either
+*         std::queue<int> or ThreadSafeQueue<int>.
+*/
 template <typename QueueType>
 void testQueueConcurrentPop() {
     static_assert(
@@ -53,6 +71,15 @@ void testQueueConcurrentPop() {
     cout << "Concurrent pop finished successfully, stack size=" << stack.size() << "\n";
 }
 
+/**
+* Tests concurrent front operations on the queue.
+*
+* Pre-fills the queue and launches two threads that simultaneously access the front element.
+* Verifies that the queue handles concurrent front accesses correctly.
+*
+* @tparam QueueType The type of the queue to test, it must be either
+*         std::queue<int> or ThreadSafeQueue<int>.
+*/
 template <typename QueueType>
 void testQueueConcurrentFront() {
     static_assert(
@@ -76,6 +103,15 @@ void testQueueConcurrentFront() {
     cout << "Concurrent front finished successfully \n";
 }
 
+/**
+* Tests concurrent size operations on the queue.
+*
+* Pre-fills the queue and launches two threads that simultaneously access the size.
+* Verifies that the queue handles concurrent size accesses correctly.
+*
+* @tparam QueueType The type of the queue to test, it must be either
+*         std::queue<int> or ThreadSafeQueue<int>.
+*/
 template <typename QueueType>
 void testQueueConcurrentSize() {
     static_assert(
@@ -99,6 +135,15 @@ void testQueueConcurrentSize() {
     cout << "Concurrent size finished successfully \n";
 }
 
+/**
+* Tests concurrent empty operations on the queue.
+*
+* Pre-fills the queue and launches two threads that simultaneously access the empty state.
+* Verifies that the queue handles concurrent empty checks correctly.
+*
+* @tparam QueueType The type of the queue to test, it must be either
+*         std::queue<int> or ThreadSafeQueue<int>.
+*/
 template <typename QueueType>
 void testQueueConcurrentEmpty() {
     static_assert(
