@@ -5,6 +5,11 @@
 
 using namespace std;
 
+/**
+* Thread-safe stack implementation.
+*
+* @tparam T The type of elements in the stack.
+*/
 template<typename T> class ThreadSafeStack {
 private:
     struct Node {
@@ -19,7 +24,14 @@ private:
     int stackSize = 0;
 
 public:
+    /**
+    * Default constructor.
+    */
     ThreadSafeStack() = default;
+
+    /**
+    * Destructor.
+    */
     ~ThreadSafeStack() {
         while (head) {
             Node* temp = head;
@@ -28,6 +40,11 @@ public:
         }
     }
 
+    /**
+    * Pushes an element onto the stack.
+    *
+    * @param element The element to be added.
+    */
     void push(const T& element) {
         mutex.lock();
         head = new Node(element, head);
@@ -36,6 +53,11 @@ public:
         mutex.unlock();
     }
 
+    /**
+    * Pops an element from the stack.
+    *
+    * @return The element that was removed.
+    */
     T pop() {
         if(isEmptyFlag) {
             throw runtime_error("Stack is empty");
@@ -50,6 +72,11 @@ public:
         return element;
     }
 
+    /**
+    * Returns a reference to the top element of the stack.
+    *
+    * @return A reference to the top element.
+    */
     T& top() {
         if(isEmptyFlag) {
             throw runtime_error("Stack is empty");
@@ -60,6 +87,11 @@ public:
         return element;
     }
 
+    /**
+    * Checks whether the stack is empty.
+    *
+    * @return True if the stack is empty, false otherwise.
+    */
     bool empty() const {
         mutex.lock();
         bool empty = isEmptyFlag;
@@ -67,6 +99,11 @@ public:
         return empty;
     }
 
+    /**
+    * Returns the number of elements in the stack.
+    *
+    * @return The number of elements in the stack.
+    */
     int size() const {
         mutex.lock();
         int size = stackSize;
