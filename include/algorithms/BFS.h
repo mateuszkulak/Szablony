@@ -5,6 +5,9 @@
 
 using namespace std;
 
+/**
+* Breadth-First Search (BFS) algorithm implementation.
+*/
 class BFS : public Algorithm {
 private:
     vector<bool> visited;
@@ -36,10 +39,37 @@ private:
     }
 
 public:
+    /**
+    * Constructor for BFS algorithm.
+    *
+    * @param[in] g Reference to the graph to be searched.
+    */
     BFS(Graph& g);
+
+    /**
+    * Destructor for BFS algorithm.
+    */
     ~BFS();
 
+    /**
+    * Runs the BFS algorithm.
+    *
+    * @param[in] start The starting node for the search.
+    * @param[in] useCustomDataStructure Flag to use a custom data structure.
+    */
     void run(int start, bool useCustomDataStructure);
+
+    /**
+    * Describes the BFS algorithm.
+    *
+    * @return A description of the algorithm.
+    */
     const char* describe() const override;
+
+    /**
+    * Gets the order of visited nodes.
+    *
+    * @return A vector of visited node IDs.
+    */
     const vector<int>& getVisitedOrder() const;
 };

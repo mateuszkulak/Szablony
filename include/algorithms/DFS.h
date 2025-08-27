@@ -5,6 +5,9 @@
 
 using namespace std;
 
+/**
+ * Depth-First Search (DFS) algorithm implementation.
+ */
 class DFS : public Algorithm {
 private:
     vector<bool> visited;
@@ -37,10 +40,37 @@ private:
     }
 
 public:
+    /**
+    * Constructor for DFS algorithm.
+    *
+    * @param[in] g Reference to the graph to be searched.
+    */
     DFS(Graph& g);
+
+    /**
+    * Destructor for DFS algorithm.
+    */
     ~DFS();
 
+    /**
+    * Runs the DFS algorithm.
+    *
+    * @param[in] start The starting node for the search.
+    * @param[in] useCustomDataStructure Flag to use a custom data structure.
+    */
     void run(int start, bool useCustomDataStructure);
+
+    /**
+    * Describes the DFS algorithm.
+    *
+    * @return A description of the algorithm.
+    */
     const char* describe() const override;
+
+    /**
+    * Gets the order of visited nodes.
+    *
+    * @return A vector of visited node IDs.
+    */
     const vector<int>& getVisitedOrder() const;
 };
