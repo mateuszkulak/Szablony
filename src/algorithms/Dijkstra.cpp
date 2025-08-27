@@ -5,14 +5,18 @@
 
 using namespace std;
 
-Dijkstra::Dijkstra(Graph& g) : graph(g) {}
+Dijkstra::Dijkstra(Graph &g) : graph(g) {}
 
 Dijkstra::~Dijkstra() {}
 
-void Dijkstra::run(int start, int end, bool useCustomDataStructure) {
-    if (useCustomDataStructure) {
+void Dijkstra::run(int start, int end, bool useCustomDataStructure)
+{
+    if (useCustomDataStructure)
+    {
         Dijkstra::dijkstraCustomSearch(start, end);
-    } else {
+    }
+    else
+    {
         Dijkstra::dijkstraStlSearch(start, end);
     }
 
@@ -21,7 +25,6 @@ void Dijkstra::run(int start, int end, bool useCustomDataStructure) {
         cout << distances[i] << " ";
     }
     cout << endl;
-    
 
     for (int i = 0; i < shortestPathResult.size(); i++)
     {
@@ -30,16 +33,19 @@ void Dijkstra::run(int start, int end, bool useCustomDataStructure) {
     cout << endl;
 }
 
-const char* Dijkstra::describe() const {
+const char *Dijkstra::describe() const
+{
     return "This is Dijkstra's algorithm. It finds the shortest path from a starting node to all other nodes in a weighted graph.";
 }
 
-void Dijkstra::dijkstraStlSearch(int start, int end) {
+void Dijkstra::dijkstraStlSearch(int start, int end)
+{
     priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
     dijkstraSearch(start, end, pq);
 }
 
-void Dijkstra::dijkstraCustomSearch(int start, int end) {
+void Dijkstra::dijkstraCustomSearch(int start, int end)
+{
     ThreadSafePriorityQueue<pair<int, int>, greater<pair<int, int>>> pq;
     dijkstraSearch(start, end, pq);
 }

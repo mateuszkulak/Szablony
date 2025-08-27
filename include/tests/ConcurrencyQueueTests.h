@@ -8,60 +8,65 @@
 using namespace std;
 
 /**
-* Tests concurrent push operations on the queue.
-*
-* Pre-fills the queue and launches two threads that simultaneously push elements.
-* Verifies that the queue handles concurrent insertions correctly.
-*
-* @tparam QueueType The type of the queue to test, it must be either
-*         std::queue<int> or ThreadSafeQueue<int>.
-*/
+ * Tests concurrent push operations on the queue.
+ *
+ * Pre-fills the queue and launches two threads that simultaneously push elements.
+ * Verifies that the queue handles concurrent insertions correctly.
+ *
+ * @tparam QueueType The type of the queue to test, it must be either
+ *         std::queue<int> or ThreadSafeQueue<int>.
+ */
 template <typename QueueType>
-void testQueueConcurrentPush() {
+void testQueueConcurrentPush()
+{
     static_assert(
         is_same<QueueType, queue<int>>::value ||
-        is_same<QueueType, ThreadSafeQueue<int>>::value,
-        "For this test QueueType must be either queue<int> or ThreadSafeQueue<int>"
-    );
+            is_same<QueueType, ThreadSafeQueue<int>>::value,
+        "For this test QueueType must be either queue<int> or ThreadSafeQueue<int>");
     cout << "Concurrent push test started\n";
 
     QueueType queue;
-    auto worker = [&]() {
-        for (int i = 0; i < 100000; ++i) {
+    auto worker = [&]()
+    {
+        for (int i = 0; i < 100000; ++i)
+        {
             queue.push(i);
         }
     };
     thread t1(worker), t2(worker);
-    t1.join(); 
+    t1.join();
     t2.join();
     cout << "Concurrent push finished successfully, size=" << stack.size() << "\n";
 }
 
 /**
-* Tests concurrent pop operations on the queue.
-*
-* Pre-fills the queue and launches two threads that simultaneously pop elements.
-* Verifies that the queue handles concurrent removals correctly.
-*
-* @tparam QueueType The type of the queue to test, it must be either
-*         std::queue<int> or ThreadSafeQueue<int>.
-*/
+ * Tests concurrent pop operations on the queue.
+ *
+ * Pre-fills the queue and launches two threads that simultaneously pop elements.
+ * Verifies that the queue handles concurrent removals correctly.
+ *
+ * @tparam QueueType The type of the queue to test, it must be either
+ *         std::queue<int> or ThreadSafeQueue<int>.
+ */
 template <typename QueueType>
-void testQueueConcurrentPop() {
+void testQueueConcurrentPop()
+{
     static_assert(
         is_same<QueueType, queue<int>>::value ||
-        is_same<QueueType, ThreadSafeQueue<int>>::value,
-        "For this test QueueType must be either queue<int> or ThreadSafeQueue<int>"
-    );
+            is_same<QueueType, ThreadSafeQueue<int>>::value,
+        "For this test QueueType must be either queue<int> or ThreadSafeQueue<int>");
     cout << "Concurrent pop test started\n";
 
     QueueType queue;
-    for (int i = 0; i < 200000; ++i) {
+    for (int i = 0; i < 200000; ++i)
+    {
         queue.push(i);
     }
 
-    auto worker = [&]() {
-        for (int i = 0; i < 100000; ++i) {
+    auto worker = [&]()
+    {
+        for (int i = 0; i < 100000; ++i)
+        {
             queue.pop();
         }
     };
@@ -72,28 +77,30 @@ void testQueueConcurrentPop() {
 }
 
 /**
-* Tests concurrent front operations on the queue.
-*
-* Pre-fills the queue and launches two threads that simultaneously access the front element.
-* Verifies that the queue handles concurrent front accesses correctly.
-*
-* @tparam QueueType The type of the queue to test, it must be either
-*         std::queue<int> or ThreadSafeQueue<int>.
-*/
+ * Tests concurrent front operations on the queue.
+ *
+ * Pre-fills the queue and launches two threads that simultaneously access the front element.
+ * Verifies that the queue handles concurrent front accesses correctly.
+ *
+ * @tparam QueueType The type of the queue to test, it must be either
+ *         std::queue<int> or ThreadSafeQueue<int>.
+ */
 template <typename QueueType>
-void testQueueConcurrentFront() {
+void testQueueConcurrentFront()
+{
     static_assert(
         is_same<QueueType, queue<int>>::value ||
-        is_same<QueueType, ThreadSafeQueue<int>>::value,
-        "For this test QueueType must be either queue<int> or ThreadSafeQueue<int>"
-    );
+            is_same<QueueType, ThreadSafeQueue<int>>::value,
+        "For this test QueueType must be either queue<int> or ThreadSafeQueue<int>");
     cout << "Concurrent front test started\n";
 
     QueueType queue;
     queue.push(42);
 
-    auto worker = [&]() {
-        for (int i = 0; i < 100000; ++i) {
+    auto worker = [&]()
+    {
+        for (int i = 0; i < 100000; ++i)
+        {
             auto tmp = queue.front();
         }
     };
@@ -104,28 +111,30 @@ void testQueueConcurrentFront() {
 }
 
 /**
-* Tests concurrent size operations on the queue.
-*
-* Pre-fills the queue and launches two threads that simultaneously access the size.
-* Verifies that the queue handles concurrent size accesses correctly.
-*
-* @tparam QueueType The type of the queue to test, it must be either
-*         std::queue<int> or ThreadSafeQueue<int>.
-*/
+ * Tests concurrent size operations on the queue.
+ *
+ * Pre-fills the queue and launches two threads that simultaneously access the size.
+ * Verifies that the queue handles concurrent size accesses correctly.
+ *
+ * @tparam QueueType The type of the queue to test, it must be either
+ *         std::queue<int> or ThreadSafeQueue<int>.
+ */
 template <typename QueueType>
-void testQueueConcurrentSize() {
+void testQueueConcurrentSize()
+{
     static_assert(
         is_same<QueueType, queue<int>>::value ||
-        is_same<QueueType, ThreadSafeQueue<int>>::value,
-        "For this test QueueType must be either queue<int> or ThreadSafeQueue<int>"
-    );
+            is_same<QueueType, ThreadSafeQueue<int>>::value,
+        "For this test QueueType must be either queue<int> or ThreadSafeQueue<int>");
     cout << "Concurrent size test started\n";
 
     QueueType queue;
     queue.push(42);
 
-    auto worker = [&]() {
-        for (int i = 0; i < 100000; ++i) {
+    auto worker = [&]()
+    {
+        for (int i = 0; i < 100000; ++i)
+        {
             auto tmp = queue.size();
         }
     };
@@ -136,28 +145,30 @@ void testQueueConcurrentSize() {
 }
 
 /**
-* Tests concurrent empty operations on the queue.
-*
-* Pre-fills the queue and launches two threads that simultaneously access the empty state.
-* Verifies that the queue handles concurrent empty checks correctly.
-*
-* @tparam QueueType The type of the queue to test, it must be either
-*         std::queue<int> or ThreadSafeQueue<int>.
-*/
+ * Tests concurrent empty operations on the queue.
+ *
+ * Pre-fills the queue and launches two threads that simultaneously access the empty state.
+ * Verifies that the queue handles concurrent empty checks correctly.
+ *
+ * @tparam QueueType The type of the queue to test, it must be either
+ *         std::queue<int> or ThreadSafeQueue<int>.
+ */
 template <typename QueueType>
-void testQueueConcurrentEmpty() {
+void testQueueConcurrentEmpty()
+{
     static_assert(
         is_same<QueueType, queue<int>>::value ||
-        is_same<QueueType, ThreadSafeQueue<int>>::value,
-        "For this test QueueType must be either queue<int> or ThreadSafeQueue<int>"
-    );
+            is_same<QueueType, ThreadSafeQueue<int>>::value,
+        "For this test QueueType must be either queue<int> or ThreadSafeQueue<int>");
     cout << "Concurrent empty test started\n";
 
     QueueType queue;
     queue.push(42);
 
-    auto worker = [&]() {
-        for (int i = 0; i < 100000; ++i) {
+    auto worker = [&]()
+    {
+        for (int i = 0; i < 100000; ++i)
+        {
             auto tmp = queue.empty();
         }
     };

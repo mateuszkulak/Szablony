@@ -7,9 +7,10 @@
 
 using namespace std::chrono;
 
-void testDFSPerformance(Graph& g) {
+void testDFSPerformance(Graph &g)
+{
     DFS dfs(g);
-    
+
     auto start = high_resolution_clock::now();
     dfs.run(0, true);
     auto end = high_resolution_clock::now();
@@ -23,7 +24,8 @@ void testDFSPerformance(Graph& g) {
     std::cout << "Time STL: " << duration_stl << " ms\n";
 }
 
-void testBFSPerformance(Graph& g) {
+void testBFSPerformance(Graph &g)
+{
     BFS bfs(g);
 
     auto start = high_resolution_clock::now();
@@ -39,7 +41,8 @@ void testBFSPerformance(Graph& g) {
     std::cout << "Time STL: " << duration_stl << " ms\n";
 }
 
-void testDijkstraPerformance(Graph& g) {
+void testDijkstraPerformance(Graph &g)
+{
     Dijkstra dijkstra(g);
 
     auto start = high_resolution_clock::now();
