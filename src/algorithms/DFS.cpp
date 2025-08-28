@@ -29,7 +29,7 @@ void DFS::run(int start, bool useCustomDataStructure)
     cout << endl;
 }
 
-const char *DFS::describe() const
+const char* DFS::describe() const
 {
     return "This is the Depth-First Search (DFS) algorithm. It explores as far as possible along each branch before backtracking.";
 }

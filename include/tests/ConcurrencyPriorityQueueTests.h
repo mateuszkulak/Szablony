@@ -17,7 +17,7 @@ using namespace std;
 *         std::priority_queue<int> or ThreadSafePriorityQueue<int>.
 */
 template <typename PriorityQueueType>
-void testQueueConcurrentPush()
+void testPriorityQueueConcurrentPush()
 {
     static_assert(
         is_same<PriorityQueueType, priority_queue<int>>::value ||
@@ -36,7 +36,7 @@ void testQueueConcurrentPush()
     thread t1(worker), t2(worker);
     t1.join();
     t2.join();
-    cout << "Concurrent push finished successfully, size=" << stack.size() << "\n";
+    cout << "Concurrent push finished successfully, size=" << queue.size() << "\n";
 }
 
 /**
@@ -49,7 +49,7 @@ void testQueueConcurrentPush()
 *         std::priority_queue<int> or ThreadSafePriorityQueue<int>.
 */
 template <typename PriorityQueueType>
-void testQueueConcurrentPop()
+void testPriorityQueueConcurrentPop()
 {
     static_assert(
         is_same<PriorityQueueType, priority_queue<int>>::value ||
@@ -73,7 +73,7 @@ void testQueueConcurrentPop()
     thread t1(worker), t2(worker);
     t1.join();
     t2.join();
-    cout << "Concurrent pop finished successfully, stack size=" << stack.size() << "\n";
+    cout << "Concurrent pop finished successfully, stack size=" << queue.size() << "\n";
 }
 
 /**
@@ -86,7 +86,7 @@ void testQueueConcurrentPop()
 *         std::priority_queue<int> or ThreadSafePriorityQueue<int>.
 */
 template <typename PriorityQueueType>
-void testQueueConcurrentTop()
+void testPriorityQueueConcurrentTop()
 {
     static_assert(
         is_same<PriorityQueueType, priority_queue<int>>::value ||
@@ -120,7 +120,7 @@ void testQueueConcurrentTop()
 *         std::priority_queue<int> or ThreadSafePriorityQueue<int>.
 */
 template <typename PriorityQueueType>
-void testQueueConcurrentEmpty()
+void testPriorityQueueConcurrentEmpty()
 {
     static_assert(
         is_same<PriorityQueueType, priority_queue<int>>::value ||
@@ -154,7 +154,7 @@ void testQueueConcurrentEmpty()
 *         std::priority_queue<int> or ThreadSafePriorityQueue<int>.
 */
 template <typename PriorityQueueType>
-void testQueueConcurrentSize()
+void testPriorityQueueConcurrentSize()
 {
     static_assert(
         is_same<PriorityQueueType, priority_queue<int>>::value ||

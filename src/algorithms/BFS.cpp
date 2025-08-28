@@ -31,7 +31,7 @@ void BFS::run(int start, bool useCustomDataStructure)
     cout << endl;
 }
 
-const char *BFS::describe() const
+const char* BFS::describe() const
 {
     return "This is the Breadth-First Search (BFS) algorithm. It explores all the neighbors at the present depth prior to moving on to the nodes at the next depth level.";
 }

@@ -36,7 +36,7 @@ void testQueueConcurrentPush()
     thread t1(worker), t2(worker);
     t1.join();
     t2.join();
-    cout << "Concurrent push finished successfully, size=" << stack.size() << "\n";
+    cout << "Concurrent push finished successfully, size=" << queue.size() << "\n";
 }
 
 /**
@@ -73,7 +73,7 @@ void testQueueConcurrentPop()
     thread t1(worker), t2(worker);
     t1.join();
     t2.join();
-    cout << "Concurrent pop finished successfully, stack size=" << stack.size() << "\n";
+    cout << "Concurrent pop finished successfully, queue size=" << queue.size() << "\n";
 }
 
 /**
