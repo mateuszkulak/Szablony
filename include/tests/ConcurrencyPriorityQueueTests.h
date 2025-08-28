@@ -77,22 +77,22 @@ void testQueueConcurrentPop()
 }
 
 /**
- * Tests concurrent front operations on the priority queue.
+ * Tests concurrent top operations on the priority queue.
  *
- * Pre-fills the queue and launches two threads that simultaneously access the front element.
- * Verifies that the queue handles concurrent front accesses correctly.
+ * Pre-fills the queue and launches two threads that simultaneously access the top element.
+ * Verifies that the queue handles concurrent top accesses correctly.
  *
  * @tparam PriorityQueueType The type of the priority queue to test, it must be either
  *         std::priority_queue<int> or ThreadSafePriorityQueue<int>.
  */
 template <typename PriorityQueueType>
-void testQueueConcurrentFront()
+void testQueueConcurrentTop()
 {
     static_assert(
         is_same<PriorityQueueType, priority_queue<int>>::value ||
             is_same<PriorityQueueType, ThreadSafePriorityQueue<int>>::value,
         "For this test PriorityQueueType must be either priority_queue<int> or ThreadSafePriorityQueue<int>");
-    cout << "Concurrent front test started\n";
+    cout << "Concurrent top test started\n";
 
     PriorityQueueType queue;
     queue.push(42);
@@ -101,47 +101,13 @@ void testQueueConcurrentFront()
     {
         for (int i = 0; i < 100000; ++i)
         {
-            auto tmp = queue.front();
+            auto tmp = queue.top();
         }
     };
     thread t1(worker), t2(worker);
     t1.join();
     t2.join();
-    cout << "Concurrent front finished successfully \n";
-}
-
-/**
- * Tests concurrent size operations on the priority queue.
- *
- * Pre-fills the queue and launches two threads that simultaneously access the size.
- * Verifies that the queue handles concurrent size accesses correctly.
- *
- * @tparam PriorityQueueType The type of the priority queue to test, it must be either
- *         std::priority_queue<int> or ThreadSafePriorityQueue<int>.
- */
-template <typename PriorityQueueType>
-void testQueueConcurrentSize()
-{
-    static_assert(
-        is_same<PriorityQueueType, priority_queue<int>>::value ||
-            is_same<PriorityQueueType, ThreadSafePriorityQueue<int>>::value,
-        "For this test PriorityQueueType must be either priority_queue<int> or ThreadSafePriorityQueue<int>");
-    cout << "Concurrent size test started\n";
-
-    PriorityQueueType queue;
-    queue.push(42);
-
-    auto worker = [&]()
-    {
-        for (int i = 0; i < 100000; ++i)
-        {
-            auto tmp = queue.size();
-        }
-    };
-    thread t1(worker), t2(worker);
-    t1.join();
-    t2.join();
-    cout << "Concurrent size finished successfully \n";
+    cout << "Concurrent top finished successfully \n";
 }
 
 /**
@@ -176,4 +142,38 @@ void testQueueConcurrentEmpty()
     t1.join();
     t2.join();
     cout << "Concurrent empty finished successfully\n";
+}
+
+/**
+ * Tests concurrent size operations on the priority queue.
+ *
+ * Pre-fills the queue and launches two threads that simultaneously access the size.
+ * Verifies that the queue handles concurrent size accesses correctly.
+ *
+ * @tparam PriorityQueueType The type of the priority queue to test, it must be either
+ *         std::priority_queue<int> or ThreadSafePriorityQueue<int>.
+ */
+template <typename PriorityQueueType>
+void testQueueConcurrentSize()
+{
+    static_assert(
+        is_same<PriorityQueueType, priority_queue<int>>::value ||
+            is_same<PriorityQueueType, ThreadSafePriorityQueue<int>>::value,
+        "For this test PriorityQueueType must be either priority_queue<int> or ThreadSafePriorityQueue<int>");
+    cout << "Concurrent size test started\n";
+
+    PriorityQueueType queue;
+    queue.push(42);
+
+    auto worker = [&]()
+    {
+        for (int i = 0; i < 100000; ++i)
+        {
+            auto tmp = queue.size();
+        }
+    };
+    thread t1(worker), t2(worker);
+    t1.join();
+    t2.join();
+    cout << "Concurrent size finished successfully \n";
 }
