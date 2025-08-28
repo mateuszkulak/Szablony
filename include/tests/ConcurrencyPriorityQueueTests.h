@@ -8,14 +8,14 @@
 using namespace std;
 
 /**
- * Tests concurrent push operations on the priority queue.
- *
- * Pre-fills the queue and launches two threads that simultaneously push elements.
- * Verifies that the queue handles concurrent insertions correctly.
- *
- * @tparam PriorityQueueType The type of the priority queue to test, it must be either
- *         std::priority_queue<int> or ThreadSafePriorityQueue<int>.
- */
+* Tests concurrent push operations on the priority queue.
+*
+* Pre-fills the queue and launches two threads that simultaneously push elements.
+* Verifies that the queue handles concurrent insertions correctly.
+*
+* @tparam PriorityQueueType The type of the priority queue to test, it must be either
+*         std::priority_queue<int> or ThreadSafePriorityQueue<int>.
+*/
 template <typename PriorityQueueType>
 void testQueueConcurrentPush()
 {
@@ -40,14 +40,14 @@ void testQueueConcurrentPush()
 }
 
 /**
- * Tests concurrent pop operations on the priority queue.
- *
- * Pre-fills the queue and launches two threads that simultaneously pop elements.
- * Verifies that the queue handles concurrent removals correctly.
- *
- * @tparam PriorityQueueType The type of the priority queue to test, it must be either
- *         std::priority_queue<int> or ThreadSafePriorityQueue<int>.
- */
+* Tests concurrent pop operations on the priority queue.
+*
+* Pre-fills the queue and launches two threads that simultaneously pop elements.
+* Verifies that the queue handles concurrent removals correctly.
+*
+* @tparam PriorityQueueType The type of the priority queue to test, it must be either
+*         std::priority_queue<int> or ThreadSafePriorityQueue<int>.
+*/
 template <typename PriorityQueueType>
 void testQueueConcurrentPop()
 {
@@ -77,14 +77,14 @@ void testQueueConcurrentPop()
 }
 
 /**
- * Tests concurrent top operations on the priority queue.
- *
- * Pre-fills the queue and launches two threads that simultaneously access the top element.
- * Verifies that the queue handles concurrent top accesses correctly.
- *
- * @tparam PriorityQueueType The type of the priority queue to test, it must be either
- *         std::priority_queue<int> or ThreadSafePriorityQueue<int>.
- */
+* Tests concurrent top operations on the priority queue.
+*
+* Pre-fills the queue and launches two threads that simultaneously access the top element.
+* Verifies that the queue handles concurrent top accesses correctly.
+*
+* @tparam PriorityQueueType The type of the priority queue to test, it must be either
+*         std::priority_queue<int> or ThreadSafePriorityQueue<int>.
+*/
 template <typename PriorityQueueType>
 void testQueueConcurrentTop()
 {
@@ -111,14 +111,14 @@ void testQueueConcurrentTop()
 }
 
 /**
- * Tests concurrent empty operations on the priority queue.
- *
- * Pre-fills the queue and launches two threads that simultaneously access the empty state.
- * Verifies that the queue handles concurrent empty checks correctly.
- *
- * @tparam PriorityQueueType The type of the priority queue to test, it must be either
- *         std::priority_queue<int> or ThreadSafePriorityQueue<int>.
- */
+* Tests concurrent empty operations on the priority queue.
+*
+* Pre-fills the queue and launches two threads that simultaneously access the empty state.
+* Verifies that the queue handles concurrent empty checks correctly.
+*
+* @tparam PriorityQueueType The type of the priority queue to test, it must be either
+*         std::priority_queue<int> or ThreadSafePriorityQueue<int>.
+*/
 template <typename PriorityQueueType>
 void testQueueConcurrentEmpty()
 {
@@ -145,14 +145,14 @@ void testQueueConcurrentEmpty()
 }
 
 /**
- * Tests concurrent size operations on the priority queue.
- *
- * Pre-fills the queue and launches two threads that simultaneously access the size.
- * Verifies that the queue handles concurrent size accesses correctly.
- *
- * @tparam PriorityQueueType The type of the priority queue to test, it must be either
- *         std::priority_queue<int> or ThreadSafePriorityQueue<int>.
- */
+* Tests concurrent size operations on the priority queue.
+*
+* Pre-fills the queue and launches two threads that simultaneously access the size.
+* Verifies that the queue handles concurrent size accesses correctly.
+*
+* @tparam PriorityQueueType The type of the priority queue to test, it must be either
+*         std::priority_queue<int> or ThreadSafePriorityQueue<int>.
+*/
 template <typename PriorityQueueType>
 void testQueueConcurrentSize()
 {

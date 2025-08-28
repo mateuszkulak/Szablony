@@ -8,8 +8,8 @@
 using namespace std;
 
 /**
- * Dijkstra's algorithm implementation.
- */
+* Dijkstra's algorithm implementation.
+*/
 class Dijkstra : public Algorithm
 {
 private:
@@ -69,37 +69,37 @@ private:
 
 public:
     /**
-     * Constructor for Dijkstra algorithm.
-     *
-     * @param[in] g Reference to the graph to be searched.
-     */
+    * Constructor for Dijkstra algorithm.
+    *
+    * @param[in] g Reference to the graph to be searched.
+    */
     Dijkstra(Graph &g);
 
     /**
-     * Destructor for Dijkstra algorithm.
-     */
+    * Destructor for Dijkstra algorithm.
+    */
     ~Dijkstra();
 
     /**
-     * Runs the Dijkstra algorithm.
-     *
-     * @param[in] start The starting node for the search.
-     * @param[in] end The target node for the search.
-     * @param[in] useCustomDataStructure Flag to use a custom data structure.
-     */
+    * Runs the Dijkstra algorithm.
+    *
+    * @param[in] start The starting node for the search.
+    * @param[in] end The target node for the search.
+    * @param[in] useCustomDataStructure Flag to use a custom data structure.
+    */
     void run(int start, int end, bool useCustomDataStructure);
 
     /**
-     * Describes the Dijkstra algorithm.
-     *
-     * @return A description of the algorithm.
-     */
-    const char *describe() const override;
+    * Describes the Dijkstra algorithm.
+    *
+    * @return A description of the algorithm.
+    */
+    const char*describe() const override;
 
     /**
-     * Gets the shortest path from the start node to the end node.
-     *
-     * @return A vector of shortest path node IDs.
-     */
+    * Gets the shortest path from the start node to the end node.
+    *
+    * @return A vector of shortest path node IDs.
+    */
     const vector<int> &getShortestPath() const;
 };
