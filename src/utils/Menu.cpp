@@ -320,13 +320,15 @@ void showExampleAlgorithmRuns(Graph &g)
 
     cout << "Dijkstra algorithm from node 0 to 4:\n";
     cout << "Result using custom Priority Queue:\n";
+    auto pq = ThreadSafePriorityQueue<pair<int, int>, greater<pair<int, int>>>();
     Dijkstra dijkstra(g);
-    dijkstra.run(0, 4, true);
+    dijkstra.runTemplate(0, 4, &pq);
     cout << "Result using STL Priority Queue:\n";
+    auto pq1 = priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>>();
     Dijkstra dijkstra2(g);
-    dijkstra2.run(0, 4, false);
+    dijkstra2.runTemplate(0, 4, &pq1);
 
-    cout << "DFS algorithm from node 0 to 4:\n";
+    cout << "DFS algorithm from node 0:\n";
     cout << "Result using custom Stack:\n";
     DFS dfs(g);
     dfs.run(0, 4);
@@ -334,7 +336,7 @@ void showExampleAlgorithmRuns(Graph &g)
     DFS dfs2(g);
     dfs2.run(0, 4);
 
-    cout << "BFS algorithm from node 0 to 4:\n";
+    cout << "BFS algorithm from node 0:\n";
     cout << "Result using custom Queue:\n";
     BFS bfs(g);
     bfs.run(0, 4);

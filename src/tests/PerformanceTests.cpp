@@ -2,8 +2,11 @@
 #include "algorithms/DFS.h"
 #include "algorithms/BFS.h"
 #include "algorithms/Dijkstra.h"
+#include "custom_data_structures/ThreadSafePriorityQueue.h"
+#include <algorithm>
 #include <chrono>
 #include <iostream>
+#include <queue>
 
 using namespace std::chrono;
 
@@ -46,13 +49,15 @@ void testDijkstraPerformance(Graph &g)
     Dijkstra dijkstra(g);
 
     auto start = high_resolution_clock::now();
-    dijkstra.run(0, g.getNumVertices() - 1, true);
+    auto pq = ThreadSafePriorityQueue<pair<int, int>, greater<pair<int, int>>>();
+    dijkstra.runTemplate(0, g.getNumVertices() - 1, &pq);
     auto end = high_resolution_clock::now();
     auto duration_custom = duration_cast<milliseconds>(end - start).count();
     std::cout << "Time custom: " << duration_custom << " ms\n";
 
     start = high_resolution_clock::now();
-    dijkstra.run(0, g.getNumVertices() - 1, false);
+    auto pq1 = priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>>();
+    dijkstra.runTemplate(0, g.getNumVertices() - 1, &pq1);
     end = high_resolution_clock::now();
     auto duration_stl = duration_cast<milliseconds>(end - start).count();
     std::cout << "Time STL: " << duration_stl << " ms\n";

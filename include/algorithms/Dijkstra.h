@@ -4,6 +4,7 @@
 #include <vector>
 #include <algorithm>
 #include <limits>
+#include <iostream>
 
 using namespace std;
 
@@ -27,14 +28,14 @@ private:
         distances.assign(graph.getNumVertices(), numeric_limits<int>::max());
         shortestPath.assign(graph.getNumVertices(), -1);
         distances[start] = 0;
-        pq.push({0, start});
+        pq->push({0, start});
 
         const vector<vector<int>> &adjacencyMatrix = graph.getAdjacencyMatrix();
 
-        while (!pq.empty())
+        while (!pq->empty())
         {
-            auto [dist, current] = pq.top();
-            pq.pop();
+            auto [dist, current] = pq->top();
+            pq->pop();
 
             if (current == end)
             {
@@ -51,7 +52,7 @@ private:
                 {
                     distances[neighbor] = newDist;
                     shortestPath[neighbor] = current;
-                    pq.push({newDist, neighbor});
+                    pq->push({newDist, neighbor});
                 }
             }
         }
@@ -88,6 +89,31 @@ public:
     * @param[in] useCustomDataStructure Flag to use a custom data structure.
     */
     void run(int start, int end, bool useCustomDataStructure);
+
+    /**
+    * Runs the Dijkstra algorithm.
+    *
+    * @param[in] start The starting node for the search.
+    * @param[in] end The target node for the search.
+    * @tparam QueueType PriorityQueueType.
+    */
+    template <typename QueueType>
+    void runTemplate(int start, int end, QueueType queue)
+    {
+        dijkstraSearch(start, end, queue);
+
+        for (size_t i = 0; i < graph.getNumVertices(); i++)
+        {
+            cout << distances[i] << " ";
+        }
+        cout << endl;
+
+        for (int i = 0; i < shortestPathResult.size(); i++)
+        {
+            cout << shortestPathResult[i] << " ";
+        }
+        cout << endl;
+    }
 
     /**
     * Describes the Dijkstra algorithm.
